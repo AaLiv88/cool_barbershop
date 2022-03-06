@@ -48,12 +48,50 @@
 // exports.watch = watch;
 // exports.default = watch;
 
+var gulp = require('gulp');
+const { src, dest, watch, series, parallel } = require("gulp");
+const browoserSync = require("browser-sync").create();
 
-const { src, dest } = require("gulp")
+//Плагины
+const fileInclude = require("gulp-file-include");
+const htmlMin = require("gulp-htmlmin");
+const size = require("gulp-size");
 
-const html = (cb) => {
-  return src("./#src/html/index.html")
-  .pipe(dest("./pablic"))
+const html = () => {
+  return src(["./#src/html/*.html"])
+    .pipe(fileInclude())
+    .pipe(size())
+    .pipe(htmlMin({
+      collapseWhitespace: true
+    }))
+    .pipe(size())
+    .pipe(dest("./pablic"))
+    .pipe(browoserSync.stream());
 }
 
+//сервер
+const server = () => {
+  browoserSync.init({
+    server: {
+      baseDir: "./pablic"
+    }
+  });
+}
+
+//наблюдение
+// const watcher = () => {
+//   watch("./#scr/html/**/*.html", gulp.parallel("html"));
+// }
+gulp.task('watch', function() {
+  gulp.watch('#src/html/**/*.html', gulp.series('html'));
+});
+
+//задачи
 exports.html = html;
+// exports.watch = watcher;
+
+//сборка
+// exports.dev = series(
+//   html,
+//   parallel(watcher, server)
+// );

@@ -18,6 +18,9 @@
   "homepage": "https://github.com/AaLiv88/cool_barbershop#readme",
   "devDependencies": {
     "browser-sync": "^2.27.7",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-size": "^4.0.1"
   }
 }
