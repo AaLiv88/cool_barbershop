@@ -1,5 +1,23 @@
 {
-  "dependencies": {
-    "gulp-less": "^5.0.0"
+  "name": "cool_barbershop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaLiv88/cool_barbershop.git"
+  },
+  "author": "aaliv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaLiv88/cool_barbershop/issues"
+  },
+  "homepage": "https://github.com/AaLiv88/cool_barbershop#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "gulp": "^4.0.2"
   }
 }
