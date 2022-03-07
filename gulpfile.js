@@ -1,97 +1,91 @@
-// let project_folder = "dist";
-// let source_folder = "#scr";
+// const gulp = require('gulp');
 
-// let path = {
-//   build: {
-//     html: project_folder + "/",
-//     css: project_folder + "/css/",
-//     js: project_folder + "/js/",
-//     img: project_folder + "/img/",
-//     fonts: project_folder + "/fonts/",
-//   },
+// const sass = require('gulp-sass')(require('sass'));
+// const browserSync = require('browser-sync');
+// const { notify } = require('browser-sync');
 
-//   src: {
-//     html: source_folder + "/",
-//     css: source_folder + "/less/style",
-//     js: source_folder + "/js/script",
-//     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-//     fonts: source_folder + "/fonts/*.ttf",
-//   },
 
-//   watch: {
-//     html: source_folder + "/**/*.html",
-//     css: source_folder + "/less/**/*.less",
-//     js: source_folder + "/js/**/*.js",
-//     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-//   },
-  
-//   clean: "./" + project_folder + "/"
-// }
+// //Плагины
+// const fileInclude = require("gulp-file-include");
+// const htmlMin = require("gulp-htmlmin");
+// const size = require("gulp-size");
 
-// let { src, dest } = require('gulp').
-//   gulp = require('gulp'),
-//   browosersync = require("browser-sync").create();
 
-// function browoserSync(params) {
-//   browosersync.init({
+
+// gulp.task("sass", function() {
+//   return gulp.src("#src/sass/**/*.sass")
+//     .pipe(sass())
+//     .pipe(gulp.dest("pablic/css"))
+//     .pipe(browserSync.reload({ stream: true }));
+// });
+
+
+// gulp.task("html", function() {
+//   return gulp.src(["#src/*.html"]) 
+//     .pipe(gulp.dest("pablic/"))
+//     .pipe(browserSync.reload({ stream: true }));
+// });
+
+
+// gulp.task("watch", function() {
+//   gulp.watch("#src/sass/**/*.*", gulp.parallel("sass"));
+//   gulp.watch("#scr/index.html", gulp.parallel("html"));
+// });
+
+
+// gulp.task("browser-sync", function() {
+//   browserSync({
 //     server: {
-//       baseDir: "./" + project_folder + "/"
+//       baseDir: "#src"
 //     },
+//     notify: false
+//   });
+// });
 
-//     port: 3000,
-//     notify: false,
-//   })
-// }
 
-// let watch = gulp.parallel(browoserSync);
+// gulp.task('default', gulp.parallel('sass', "html", 'browser-sync', 'watch'));
 
-// exports.watch = watch;
-// exports.default = watch;
 
-var gulp = require('gulp');
-const { src, dest, watch, series, parallel } = require("gulp");
-const browoserSync = require("browser-sync").create();
+const { src, dest, parallel, series, watch } = require("gulp");
 
-//Плагины
-const fileInclude = require("gulp-file-include");
-const htmlMin = require("gulp-htmlmin");
-const size = require("gulp-size");
+const less = require("gulp-less");
+const browserSync = require("browser-sync").create();
 
-const html = () => {
-  return src(["./#src/html/*.html"])
-    .pipe(fileInclude())
-    .pipe(size())
-    .pipe(htmlMin({
-      collapseWhitespace: true
-    }))
-    .pipe(size())
-    .pipe(dest("./pablic"))
-    .pipe(browoserSync.stream());
+function server() {
+	browserSync.init({ // Инициализация Browsersync
+		server: { 
+      baseDir: "dist"
+    }, 
+		notify: false,
+		online: true
+	});
+};
+
+
+function watcher() {
+  watch("#src/**/*.*", getCss);
 }
 
-//сервер
-const server = () => {
-  browoserSync.init({
-    server: {
-      baseDir: "./pablic"
-    }
-  });
+function getCss() {
+  return src("#src/less/**/*.less")
+    .pipe(less())
+    .pipe(dest("dist"))
+    .pipe(browserSync.reload({ stream: true}));
+};
+
+function html() {
+  return src("#src/*.html")
+    .pipe(dest("dist"))
+    .pipe(browserSync.reload({ stream: true}));
 }
 
-//наблюдение
-// const watcher = () => {
-//   watch("./#scr/html/**/*.html", gulp.parallel("html"));
-// }
-gulp.task('watch', function() {
-  gulp.watch('#src/html/**/*.html', gulp.series('html'));
-});
-
-//задачи
+exports.getCss = getCss;
 exports.html = html;
-// exports.watch = watcher;
 
-//сборка
-// exports.dev = series(
-//   html,
-//   parallel(watcher, server)
-// );
+exports.watch = watcher;
+exports.server = server;
+
+exports.dev = series(
+  html, getCss,
+  parallel(server, watcher)
+);
