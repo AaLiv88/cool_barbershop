@@ -1,0 +1,37 @@
+.slider__list {
+  list-style: none;
+}
+
+.slider__item--hidden {
+  display: none;
+}
+
+.slider__toggels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+.slider__toggel {
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  margin: 0 20px;
+
+  background-color: transparent;
+  border: 1px solid;
+
+  font-size: 0px;
+
+  transform: rotate(-45deg);
+
+  &--active {
+    border-width: 4px;
+  }
+}

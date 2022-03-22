@@ -1,0 +1,40 @@
+.works__wrapper {
+  width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  padding-bottom: 70px;
+}
+
+.works__list {
+  list-style-type: none;
+}
+
+@media (min-width: @tablet-width) {
+  
+  .works {
+    padding-bottom: 80px;
+  }
+
+  .works__wrapper {
+    width: 84%;
+    max-width: 960px;
+    padding: 0;
+  }
+}  
+
+@media (min-width: @desktop-width) {
+
+  .works {
+    padding-bottom: 45px;
+  }
+
+  .works__wrapper {
+    width: 960px;
+  }
+
+  .works__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

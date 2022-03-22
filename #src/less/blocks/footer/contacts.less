@@ -1,0 +1,64 @@
+.contacts {
+  width: auto;
+  padding: 0 calc(20px + (10000vw - 32000px)/880);
+}
+
+.contacts__title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1;
+
+  margin-bottom: 18px;
+}
+
+.contacts__phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+
+  margin-top: 18x;
+
+  background-color: transparent;
+  border: 1px solid #3e3e3e;
+
+  margin-top: 20px;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  &-mobile {
+    font-size: 0;
+  }
+}
+
+@media (min-width: @tablet-width) {
+  .contacts {
+    width: 50%;
+    padding: 0;
+
+    text-align: left;
+  }
+
+  .contacts__title {
+    text-transform: uppercase;
+  }
+
+  .contacts__phone {
+    display: inline;
+    border: none;
+
+    &-mobile {
+      display: inline;
+    }
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .contacts {
+    width: 320px;
+  }
+}

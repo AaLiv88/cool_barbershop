@@ -22,6 +22,7 @@ function server() {
 function watcher() {
   watch("#src/less/**/*.less", getCss);
   watch("#src/**/*.html", html);
+  watch("#src/img/**/*.*", img);
 }
 
 
@@ -40,13 +41,21 @@ function html() {
     .pipe(browserSync.reload({ stream: true}));
 }
 
+
+function img() {
+  return src("#src/img/**/*.*")
+    .pipe(dest("dist/img"))
+    .pipe(browserSync.reload({ stream: true }));
+}
+
 exports.getCss = getCss;
 exports.html = html;
+exports.img = img;
 
 exports.watch = watcher;
 exports.server = server;
 
 exports.dev = series(
-  html, getCss,
+  html, getCss, img, 
   parallel(server, watcher)
 );
