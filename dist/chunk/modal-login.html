@@ -1,0 +1,32 @@
+<div class="modal" id="modal-login">
+	<div class="modal__wrap">
+		<section class="modal__window modal-login" role="dialog" aria-modal="true">
+			<h2 class="modal-login__title">Личный кабинет</h2>
+			<p class="modal-login__text">Введите свой логин и пароль, чтобы войти</p>
+		
+			<form class="modal-login__form" action="https://echo.htmlacademy.ru/" method="post">
+		
+				<label class="modal-login__input-text" for="user-login">
+					<input type="text" name="user-login" placeholder="Логин">
+				</label>
+		
+				<label class="modal-login__input-text" for="user-password">
+					<input type="text" name="user-password" placeholder="Пароль">
+				</label>
+		
+				<span class="modal-login__remember-me">
+					<input type="checkbox" id="remember-me" name="remember-me">
+					<label for="remember-me">Запомните меня</label>
+				</span>
+		
+				<a class="modal-login__help" href="#">Я забыл пароль!</a>
+		
+				<button class="btn modal-login__submit" type="submit">Войти в личный кабинет</button>
+			</form>
+		
+			<button class="modal__close">Закрыть окно</button>
+		</section>
+	</div>
+</div>
+
+<div class="modal__shadow"></div>
