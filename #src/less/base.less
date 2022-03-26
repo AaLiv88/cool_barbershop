@@ -87,7 +87,10 @@ picture {
   
       width: 0;
       height: 0;
-  
+    }
+
+    &--white::after,
+    &--white::before {
       border-bottom: 41px solid #f8f5f2;
     }
   
@@ -106,7 +109,10 @@ picture {
     &::before,
     &::after {
       top: -66px;
+    }
 
+    &--white::after,
+    &--white::before {
       border-bottom: 66px solid #f8f5f2;
     }
   }

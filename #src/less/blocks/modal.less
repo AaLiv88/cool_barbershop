@@ -1,11 +1,18 @@
 .modal {
+  justify-content: center;
+  align-items: center;
+
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
 
+  height: 100%;
+
   padding: 30px 0;
+
+  background-color: rgba(0, 0, 0, 0.4);
 
   overflow: hidden;
   overflow-y: auto;
@@ -15,71 +22,12 @@
   display: none;
 }
 
-.modal__wrap {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-grow: 0;
-
-  width: 100%;
-  min-height: 100%;
-  margin: auto;
-}
-
 .modal__window {
   position: relative;
-
-  flex-shrink: 0;
-  flex-grow: 0;
-
-  max-width: 100%;
-  margin: 50px 0;
-
-  background: #fff;
-
-  transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
-  transform: scale(0.9);
 }
 
-.modal--active{
-  visibility: visible;
-}
-.modal--active .modal__window{
-  transform: scale(1);
-  opacity: 1;
-}
-
-.modal__shadow{
-  position: fixed;
-  border:none;
-  display: block;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 98;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  background-color: black;
-}
-/* активная подложка */
-.modal__shadow--show{
-  pointer-events: auto;
-  opacity: 0.6;
-}
-
-
-
-.modal__opened {
-  position: fixed;
-  right: 0;
-  left: 0;
-  overflow: hidden;
+.modal--active {
+  display: flex;
 }
 
 .modal__close {
@@ -118,3 +66,4 @@
     transform: rotate(-45deg);
   }
 }
+
