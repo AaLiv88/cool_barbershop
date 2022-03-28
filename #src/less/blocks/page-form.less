@@ -1,0 +1,119 @@
+.page-form__checkbox {
+  position: relative;
+  display: flex;
+
+  input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:checked + label::before {
+      background-color: @brownlight;
+    }
+
+    &:checked + label::after {
+      content: "";
+
+      position: absolute;
+      top: 8px;
+      left: 6px;
+
+      height: 16px;
+      width: 21px;
+
+      background-image: url("img/checkmark.svg");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+  }
+
+  label {
+    cursor: pointer;
+
+    width: 100%;
+    height: 33px;
+
+    padding-left: 50px;
+
+    line-height: 33px;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 33px;
+      height: 33px;
+
+      border: 1px solid @brownlight;
+
+      background-color: #ffffff;
+    }
+  }
+}
+
+
+
+.page-form__radio {
+
+  label::after {
+    content: "";
+
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid @brownlight;
+    border-radius: 50%;
+
+    background-color: #ffffff;
+  }
+
+  input:checked + label::before {
+    content: "";
+
+    position: absolute;
+
+    height: 26px;
+    width: 26px;
+
+    border-radius: 50%;
+
+    background-color: #ffffff;
+
+    z-index: 10;
+  }
+
+  input:checked + label::after {
+    background-color: @brownlight;
+  }
+
+  input:focus + label::after {
+    border-color: @brown;
+  }
+}
+
+
+
+.page-form__submit {
+  width: 100%;
+
+  color: #ffffff;
+  background-color: @brown;
+
+  &:hover,
+  &:focus {
+    background-color: @browndark;
+  }
+
+  &:active {
+    background-color: @browndark;
+  }
+
+  &:disabled {
+    background-color: #aeaeae;
+  }
+}

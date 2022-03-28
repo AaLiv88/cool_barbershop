@@ -52,62 +52,8 @@
 }
 
 .modal-login__remember-me {
-  position: relative;
-  display: flex;
   margin-top: 19px;
-
-  input {
-    width: 0;
-    height: 0;
-    opacity: 0;
-
-    &:checked + label::before {
-      background-color: @brownlight;
-    }
-
-    &:checked + label::after {
-      content: "";
-
-      position: absolute;
-      top: 8px;
-      left: 6px;
-
-      height: 16px;
-      width: 21px;
-
-      background-image: url("img/checkmark.svg");
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-    }
-  }
-
-  label {
-    cursor: pointer;
-
-    width: 100%;
-    height: 33px;
-
-    padding-left: 49px;
-
-    line-height: 33px;
-
-    &::before {
-      content: "";
-
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 33px;
-      height: 33px;
-
-      border: 1px solid @brownlight;
-
-      background-color: #ffffff;
-    }
-  }
 }
-
 
 .modal-login__help {
   margin-top: 19px;
@@ -118,10 +64,42 @@
 }
 
 .modal-login__submit {
-  width: 100%;
+  margin-top: 30px;
+}
 
-  margin-top: 33px;
+.modal-login__close {
+  position: absolute;
+  top: 0;
+  right: -26px;
 
-  color: #ffffff;
-  background-color: @brown;
+  width: 0;
+  height: 0;
+  border: none;
+
+  background-color: transparent;
+  font-size: 0;
+
+  cursor: pointer;
+
+  &::after,
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: 12px;
+    right: -12px;
+
+    height: 2px;
+    width: 32px;
+
+    background-color: #ffffff;
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
 }

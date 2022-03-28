@@ -1,6 +1,6 @@
 const modalLoginEl = document.querySelector(".modal-login");
 const userListLoginBtnEl = document.querySelector(".user-list__login");
-const modalLoginCloseEL = modalLoginEl.querySelector(".modal__close");
+const modalLoginCloseEL = modalLoginEl.querySelector(".modal-login__close");
 
 userListLoginBtnEl.addEventListener("click", function(evt) {
   evt.preventDefault();

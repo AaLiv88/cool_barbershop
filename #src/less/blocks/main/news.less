@@ -6,9 +6,9 @@
   padding-top: 35px;
   padding-bottom: 28px;
 
-  border-bottom: 1px solid #e5ddd5;
+  border-bottom: 1px solid @brownlight;
 
-  background-color: #f8f5f2;
+  background-color: @bglight;
 }
 
 .news__wrapper {
@@ -28,7 +28,7 @@
   width: 0;
   height: 0;
 
-  border-bottom: 36px solid #f8f5f2;
+  border-bottom: 36px solid @bglight;
 }
 
 .news::after {
@@ -56,6 +56,17 @@
   list-style-type: none;
 }
 
+//ВРЕМЕННО!!
+.news__item {
+  &:last-child {
+    display: none;
+  }
+
+  &:first-child {
+    border-bottom: 1px solid @brownlight;
+  }
+}
+
 .news__link {
   position: relative;
 
@@ -80,12 +91,12 @@
   }
 
   &:active .news__text {
-    color: #6a4d38;
+    color: @browndark;
     text-decoration: underline;
   }
 
   &:active .news__date {
-    background-color: #6a4d38
+    background-color: @browndark
   }
 
   &:active .news__day,
@@ -94,7 +105,7 @@
   }
 
   &:active .news__date::before {
-    border-top-color: #6a4d38;
+    border-top-color: @browndark;
   }
 
   &::after {
@@ -107,7 +118,7 @@
     width: 100%;
     height: 1px;
 
-    background-color: #e5ddd5;
+    background-color: @brownlight;
   }
 
   &:last-child::after {
@@ -117,7 +128,7 @@
 }
 
 .news__text {
-  width: 75%;
+  width: 70%;
   margin-left: 20px;
 
   color: #000;
@@ -265,12 +276,4 @@
   .news__item:last-child {
     display: flex;
   }
-}
-
-@media (max-width: calc(@desktop-width - 1px)) {
-        //Временно
-
-        .news__list li:last-child {
-          display: none;
-        }
 }

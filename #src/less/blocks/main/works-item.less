@@ -59,7 +59,7 @@
     color: #ffffff;
     text-align: center;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 19px;
     // line-height: 1;
     font-weight: bold;
 
@@ -85,7 +85,7 @@
     width: 16px;
     height: 50px;
 
-    background-image: linear-gradient(to top left,transparent 50%,#826550 0),linear-gradient(to top right,#826550 50%,transparent 0);
+    background-image: linear-gradient(to top left,transparent 50%,@brown 0),linear-gradient(to top right,@brown 50%,transparent 0);
   }
 }
 
@@ -124,7 +124,7 @@
 
   .works-item__pic img {
     width: 270px;
-    height: 294px;
+    height: 100%;
   }
 
   .works-item--work-of-month {
@@ -159,6 +159,10 @@
     border-top: none;
   }
 
+  .works-item__text {
+    padding-right: 85px;
+  }
+
   .works-item__pic {
     width: 295px;
 
@@ -182,7 +186,7 @@
     &::after {
       left: calc(100% - 175px);
 
-      background-image: linear-gradient(to top right, transparent 50%, #826550 0), linear-gradient(to top left, #826550 50%, transparent 0);
+      background-image: linear-gradient(to top right, transparent 50%, @brown 0), linear-gradient(to top left, @brown 50%, transparent 0);
     }
   }
 

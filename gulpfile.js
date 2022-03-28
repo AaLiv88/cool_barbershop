@@ -8,12 +8,15 @@ const plumber = require("gulp-plumber");
 
 const concat = require("gulp-concat");
 
+const includeHtml = require("gulp-file-include");
+const minhtml = require("gulp-htmlmin");
+
 // const imagemin = require("gulp-imagemin");
 const webp = require("gulp-webp");
 
 const rename = require("gulp-rename");
 const del = require("del");
-const includeHtml = require("gulp-file-include");
+const htmlmin = require("gulp-htmlmin");
 const browserSync = require("browser-sync").create();
 
 
@@ -59,6 +62,7 @@ function getCss() {
 function html() {
   return src("#src/**/*.html")
     .pipe(includeHtml())
+    .pipe(minhtml({ collapseWhitespace: true }))
     .pipe(dest("dist"))
     .pipe(browserSync.reload({ stream: true}));
 }
@@ -72,10 +76,6 @@ function scripts() {
 
 function img() {
   return src("#src/img/**/*.*")
-    // .pipe(imagemin([
-    //   imagemin.optipng({optimizationLevel: 3}),
-    //   imagemin.svgo()
-    // ]))
     .pipe(dest("dist/img"))
     .pipe(browserSync.reload({ stream: true }));
 }
@@ -89,11 +89,17 @@ function getWebp() {
     .pipe(browserSync.reload({ stream: true }));
 }
 
+function fonts() {
+  return src("#src/fonts/**/*.*")
+    .pipe(dest("dist/fonts"))
+}
+
 exports.getCss = getCss;
 exports.html = html;
 exports.img = img;
 exports.getWebp = getWebp;
 exports.scripts = scripts;
+exports.fonts = fonts;
 
 exports.clean = clean;
 
@@ -101,6 +107,6 @@ exports.watch = watcher;
 exports.server = server;
 
 exports.dev = series(
-  clean, html, getCss, scripts, img, getWebp,
+  clean, html, getCss, scripts, img, getWebp, fonts,
   parallel(server, watcher)
 );
