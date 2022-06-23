@@ -1,0 +1,208 @@
+.works-item {
+  margin-bottom: 20px;
+}
+
+.works-item__pic {
+  width: 100%;
+  height: 176px;
+
+  background-color: @brownlight;
+
+  &--work-of-month {
+    height: 480px;
+  }
+}
+
+.works-item__pic img {
+  width: 100%;
+  height: 176px;
+}
+
+.works-item__text-wrap {
+  display: flex;
+  flex-direction: column;
+
+  padding: 27px 20px;
+  padding-bottom: 0;
+
+  border: 1px solid @brownlight;
+  border-top: none;
+}
+
+.works-item__text {
+  margin-bottom: 20px;
+}
+
+.works-item__name {
+  display: block;
+
+  font-size: 24px;
+  line-height: 1;
+
+  margin-bottom: 18px;
+}
+
+.works-item__parameters {
+  margin-top: auto;
+}
+
+.works-item--work-of-month {
+  position: relative;
+
+  .works-item__pic img{
+    height: 480px;
+  }
+
+  &::before {
+    content: "работа месяца";
+
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 19px;
+    // line-height: 1;
+    font-weight: bold;
+
+    padding: 12px 0;
+
+    position: absolute;
+    top: 401px;
+    left: 0;
+
+    width: 160px;
+    height: 50px;
+
+    background-color: @brown;
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 401px;
+    left: 160px;
+
+    width: 16px;
+    height: 50px;
+
+    background-image: linear-gradient(to top left,transparent 50%,@brown 0),linear-gradient(to top right,@brown 50%,transparent 0);
+  }
+}
+
+@media (min-width: @tablet-width) {
+
+  .works-item {
+    display: flex;
+
+    margin-bottom: 41px;
+  }
+
+  .works-item__text-wrap {
+    flex-grow: 1;
+
+    width: 375px;
+
+    padding: 40px 50px;
+    padding-bottom: 18px;
+
+    border-top: 1px solid @brownlight;
+    border-left: none;
+  }
+
+  .works-item__name {
+    margin-bottom: 35px;
+  }
+
+  .works-item__pic {
+    height: 294px;
+    width: 270px;
+
+    &--work-of-month {
+      height: 480px;
+    }
+  }
+
+  .works-item__pic img {
+    width: 270px;
+    height: 100%;
+  }
+
+  .works-item--work-of-month {
+    &::after, &::before {
+      top: 35px;
+    }
+
+    &::after {
+      left: 153px;
+    }
+
+    &::before {
+      left: -3px;
+    }
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .works-item {
+    display: block;
+    width: 295px;
+  }
+
+  .works-item__text-wrap {
+    min-height: 250px;
+    width: 295px;
+
+    padding: 30px;
+    padding-bottom: 8px;
+
+    border: 1px solid @brownlight;
+    border-top: none;
+  }
+
+  .works-item__text {
+    padding-right: 85px;
+  }
+
+  .works-item__pic {
+    width: 295px;
+
+    &--work-of-month {
+      width: 480px;
+    }
+  }
+
+  .works-item__pic img{
+    width: 295px;
+  }
+
+  .works-item--work-of-month {
+    display: flex;
+    width: 100%;
+
+    &::before {
+      left: calc(100% - 160px);
+    }
+
+    &::after {
+      left: calc(100% - 175px);
+
+      background-image: linear-gradient(to top right, transparent 50%, @brown 0), linear-gradient(to top left, @brown 50%, transparent 0);
+    }
+  }
+
+  .works-item--work-of-month .works-item__text-wrap {
+    padding: 8px 40px;
+    padding-top: 130px;
+
+    border: 1px solid @brownlight;
+    border-left: none;
+  }
+
+  .works-item--work-of-month .works-item__name {
+    margin-bottom: 27px;
+  }
+
+  .works-item--work-of-month img {
+    width: 480px;
+  }
+}

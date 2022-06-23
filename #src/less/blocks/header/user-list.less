@@ -1,0 +1,115 @@
+.user-list {
+  height: 100vw;
+  background-color: @browndark;
+}
+
+.user-list__login {
+  position: relative;
+
+  display: block;
+  padding: 17px 21px;
+  padding-left: 49px;
+
+  line-height: 18px;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #755a46;
+  }
+}
+
+.user-list__icon-login{
+  position: absolute;
+  top: 18px;
+  left: 21px;
+
+  width: 16px;
+  height: 16px;
+
+  opacity: 0.3;
+  fill: #ffffff;
+}
+
+@media (min-width: @tablet-width) {
+  .user-list {
+    display: block;
+    height: auto;
+
+    width: 50px;
+    
+    background-color: #000000;
+  }
+
+  .user-list__login {
+    color: #ffffff;
+    position: relative;
+    
+    width: 50px;
+    height: 70px;
+    padding: 0;
+
+    font-size: 0;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      background-color: #000000;
+    }
+
+    &:hover .user-list__icon-login {
+      fill: @brown;
+      opacity: 1;
+    }
+
+    &:active .user-list__icon-login{ 
+      fill: #ffffff;
+      opacity: 0.3;
+    }
+  }
+
+  .user-list__icon-login {
+    top: 28px;
+    left: 16px;
+  }
+}
+
+@media (min-width: @desktop-width){
+
+  .user-list {
+    width: auto;
+    max-width: 160px;
+  }
+
+  .user-list__login {
+    position: relative;
+
+    width: auto;
+    height: auto;
+
+    padding-top: 25px;
+    padding-right: 30px;
+    padding-bottom: 23px;
+    padding-left: 50px;
+
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #000000;
+      background-color: #ffffff;
+    }
+
+    &:hover .user-list__icon-login {
+      fill: #000;
+      opacity: 0.3;
+    }
+    
+    &:active {
+      color: rgba(0, 0, 0, 0.3);
+      background-color: #ffffff;
+      opacity: 1;
+    }
+  }
+}

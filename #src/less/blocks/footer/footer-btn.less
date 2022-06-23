@@ -1,0 +1,21 @@
+.footer-btn {
+  background-color: transparent;
+
+  border: 1px solid @grey;
+
+  &:hover,
+  &:focus {
+    border-color: #515151;
+  }
+
+  &:active {  
+    border: none;
+    color: #676767;
+    background-color: #252525;
+  }
+
+  &:active::after,
+  &:active::before {
+    opacity: 0.3;
+  }
+}

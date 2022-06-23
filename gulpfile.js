@@ -1,59 +1,112 @@
-// let project_folder = "dist";
-// let source_folder = "#scr";
+const { src, dest, parallel, series, watch } = require("gulp");
 
-// let path = {
-//   build: {
-//     html: project_folder + "/",
-//     css: project_folder + "/css/",
-//     js: project_folder + "/js/",
-//     img: project_folder + "/img/",
-//     fonts: project_folder + "/fonts/",
-//   },
+//плагины
+const less = require("gulp-less");
+const minify = require("gulp-csso");
+const autoPref = require("gulp-autoprefixer");
+const plumber = require("gulp-plumber");
 
-//   src: {
-//     html: source_folder + "/",
-//     css: source_folder + "/less/style",
-//     js: source_folder + "/js/script",
-//     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-//     fonts: source_folder + "/fonts/*.ttf",
-//   },
+const concat = require("gulp-concat");
 
-//   watch: {
-//     html: source_folder + "/**/*.html",
-//     css: source_folder + "/less/**/*.less",
-//     js: source_folder + "/js/**/*.js",
-//     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-//   },
-  
-//   clean: "./" + project_folder + "/"
-// }
+const includeHtml = require("gulp-file-include");
+const minhtml = require("gulp-htmlmin");
 
-// let { src, dest } = require('gulp').
-//   gulp = require('gulp'),
-//   browosersync = require("browser-sync").create();
+// const imagemin = require("gulp-imagemin");
+const webp = require("gulp-webp");
 
-// function browoserSync(params) {
-//   browosersync.init({
-//     server: {
-//       baseDir: "./" + project_folder + "/"
-//     },
-
-//     port: 3000,
-//     notify: false,
-//   })
-// }
-
-// let watch = gulp.parallel(browoserSync);
-
-// exports.watch = watch;
-// exports.default = watch;
+const rename = require("gulp-rename");
+const del = require("del");
+const htmlmin = require("gulp-htmlmin");
+const browserSync = require("browser-sync").create();
 
 
-const { src, dest } = require("gulp")
-
-const html = (cb) => {
-  return src("./#src/html/index.html")
-  .pipe(dest("./pablic"))
+function clean() {
+  return del("dist");
 }
 
+function server() {
+	browserSync.init({
+		server: { 
+      baseDir: "dist"
+    }, 
+
+    port: 3000,
+		notify: false,
+		online: true
+	});
+};
+
+
+function watcher() {
+  watch("#src/less/**/*.less", getCss);
+  watch("#src/**/*.html", html);
+  watch("#src/img/**/*.*", img);
+  watch("#src/js/**/*.js", scripts);
+  watch("#src/img/**/*.*", getWebp);
+}
+
+
+function getCss() {
+  return src("#src/less/style.less")
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(autoPref("last 5 versions"))
+    .pipe(dest("dist"))
+    .pipe(minify())
+    .pipe(rename("style.min.css"))
+    .pipe(dest("dist"))
+    .pipe(browserSync.reload({ stream: true}));
+};
+
+
+function html() {
+  return src("#src/**/*.html")
+    .pipe(includeHtml())
+    .pipe(minhtml({ collapseWhitespace: true }))
+    .pipe(dest("dist"))
+    .pipe(browserSync.reload({ stream: true}));
+}
+
+function scripts() {
+  return src("#src/js/**/*.js")
+    .pipe(concat("scripts.js"))
+    .pipe(dest("dist"))
+    .pipe(browserSync.reload({ stream: true }));
+}
+
+function img() {
+  return src("#src/img/**/*.*")
+    .pipe(dest("dist/img"))
+    .pipe(browserSync.reload({ stream: true }));
+}
+
+function getWebp() {
+  return src("#src/img/**/*.*")
+    .pipe(webp({
+      qualiti: 90
+    }))
+    .pipe(dest("dist/img"))
+    .pipe(browserSync.reload({ stream: true }));
+}
+
+function fonts() {
+  return src("#src/fonts/**/*.*")
+    .pipe(dest("dist/fonts"))
+}
+
+exports.getCss = getCss;
 exports.html = html;
+exports.img = img;
+exports.getWebp = getWebp;
+exports.scripts = scripts;
+exports.fonts = fonts;
+
+exports.clean = clean;
+
+exports.watch = watcher;
+exports.server = server;
+
+exports.dev = series(
+  clean, html, getCss, scripts, img, getWebp, fonts,
+  parallel(server, watcher)
+);

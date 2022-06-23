@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.min.css">
+
+</head>
+<body class="catalog">
+
+  <!-- @@include("chunk/header.html") -->
+
+  @@include("chunk/login-icon.html")
+
+  <header class="page-header">
+
+    <a class="page-header__logo" href="index.html">
+      <picture>
+        <source media="(min-width: 1200px)" srcset="img/header/logo-desktop.svg">
+        <source media="(min-width: 768px)" srcset="img/header/logo-tablet.svg">
+        <img class="page-header__logo-img" src="img/header/logo-mobile.svg"
+        width="226" height="30" alt="Барбершоп «Бородинский»">
+      </picture>
+    </a>
+  
+    <nav class="main-nav main-nav--closed">
+  
+      <button class="main-nav__toggle" type="button" aria-label="Открыть меню"></button>
+  
+      <div class="main-nav__wrapper">
+        <ul class="main-nav__list site-list">
+          <li class="site-list__item">
+            <a href="index.html">главная</a>
+          </li>
+  
+          <li class="site-list__item"> 
+            <a href="catalog.html">Наши работы</a>
+          </li>
+  
+          <li class="site-list__item site-list__item--active">
+            <a>Записаться</a>
+          </li>
+  
+          <li class="site-list__item">
+            <a href="#">Контакты</a>
+          </li>
+  
+          <li class="site-list__item">  
+            <a href="#">HTML Academy</a>
+          </li>
+        </ul>
+  
+        <ul class="main-nav__list user-list">
+          <li class="user-list__item">
+            <a class="user-list__login" href="#" aria-label="войти в аккаунт">
+              <svg width="16" height="16" class="user-list__icon-login">
+                <use xlink:href="#login-icon"></use>
+              </svg>
+              Войти
+            </a>
+          </li>
+        </ul>
+      </div>
+  
+    </nav>
+  </header>
+
+  <main class="page-main page-main--form corner-block corner-block--white">
+
+    <header class="page-title">
+      <h1 class="page-title__title">Запись на стрижку</h1>
+      <a class="page-title__to-main btn" href="#">На главную</a>
+    </header>
+
+    <section class="registration">
+      <div class="registration__wrapper">
+
+        <form class="page-form" action="https://echo.htmlacademy.ru/" method="post">
+          <div class="user-contacts">
+
+            <h2 class="visually-hidden">Введите свои контактные данные:</h2>
+
+            <ul class="registration__list user-contacts__list">
+
+              <li class="user-contacts__item user-contacts__item--surname">
+                <label class="user-contacts__text-label" for="user-surname">
+                  <input class="user-contacts__text-input user-contacts__text-input--surname"
+                  type="text" name="user-surname" id="user-surname" placeholder="Фамилия">
+                </label>
+              </li>
+  
+              <li class="user-contacts__item user-contacts__item--name">
+                <label class="user-contacts__text-label" for="user-name">
+                  <input class="user-contacts__text-input user-contacts__text-input--name"
+                  type="text" name="user-name" id="user-name" placeholder="Имя">
+                </label>
+              </li>
+  
+              <li class="user-contacts__item user-contacts__item--patronymic">
+                <label class="user-contacts__text-label" for="user-patronymic">
+                  <input class="user-contacts__text-input user-contacts__text-input--patronymic"
+                  type="text" name="user-patronymic" id="user-patronymic" placeholder="Отчество">
+                </label>
+              </li>
+  
+              <li class="user-contacts__item user-contacts__item--phone">
+                <label class="user-contacts__text-label" for="user-phone">
+                  <input class="user-contacts__text-input user-contacts__text-input--phone"
+                  type="text" name="user-phone" id="user-phone" placeholder="Контактный телефон">
+                </label>
+              </li>
+  
+              <li class="user-contacts__item user-contacts__item--email">
+                <label class="user-contacts__text-label" for="user-email">
+                  <input class="user-contacts__text-input user-contacts__text-input--email"
+                  type="text" name="user-email" id="user-email" placeholder="Контактный e-mail">
+                </label>
+              </li>
+  
+  
+              <li class="user-contacts__item user-contacts__item--additional">
+                <label class="user-contacts__text-label" for="user-additional">
+                  <input class="user-contacts__text-input user-contacts__text-input--additional"
+                  type="text" name="user-additional" id="user-additional" placeholder="Доп. информация для мастера">
+                </label>
+              </li>
+            </ul>
+          </div>
+          
+
+          <div class="beard-models">
+            <h2 class="registration__title beard-models__title">Выберете модель бороды:</h2>
+
+            <ul class="registration__list beard-models__list">
+  
+              <li class="beard-models__item beard-models__item--admiral page-form__radio">
+                <input class="visually-hidden" type="radio" name="beard-models" id="beard-models-1" value="мудрец">
+                <label for="beard-models-1">адмирал</label>
+              </li>
+  
+              <li class="beard-models__item beard-models__item--logger page-form__radio">
+                <input class="visually-hidden" type="radio" name="beard-models" id="beard-models-2" value="боярин">
+                <label for="beard-models-2">лусоруб</label>
+              </li>
+  
+              <li class="beard-models__item beard-models__item--golarnik page-form__radio">
+                <input class="visually-hidden" type="radio" name="beard-models" id="beard-models-3" value="голярник">
+                <label for="beard-models-3">голярник</label>
+              </li>
+  
+              <li class="beard-models__item beard-models__item--boyar page-form__radio">
+                <input class="visually-hidden" type="radio" name="beard-models" id="beard-models-4" value="лесоруб">
+                <label for="beard-models-4">лесоруб</label>
+              </li>
+  
+              <li class="beard-models__item beard-models__item--sage page-form__radio">
+                <input class="visually-hidden" type="radio" name="beard-models" id="beard-models-5" value="адмирал">
+                <label for="beard-models-5">мудрец</label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="added-service">
+            <h2 class="registration__title added-service__title">Дополнительные услуги:</h2>
+
+            <ul class="registration__list added-service__list">
+  
+              <li class="page-form__checkbox added-service__item">
+                <input type="checkbox" id="added-service-1" name="подкрасить бороду">
+                <label for="added-service-1">Подкрасить бороду</label>
+              </li>
+
+              <li class="page-form__checkbox added-service__item">
+                <input type="checkbox" id="added-service-2" name="Накрутить усы">
+                <label for="added-service-2">Накрутить усы</label>
+              </li>
+
+              <li class="page-form__checkbox added-service__item">
+                <input type="checkbox" id="added-service-3" name="Причесать бороду">
+                <label for="added-service-3">Причесать бороду</label>
+              </li>
+
+              <li class="page-form__checkbox added-service__item">
+                <input type="checkbox" id="added-service-4" name="Подровнять виски">
+                <label for="added-service-4">Подровнять виски</label>
+              </li>
+
+              <li class="page-form__checkbox added-service__item">
+                <input type="checkbox" id="added-service-5" name="Убрать седину">
+                <label for="added-service-5">Убрать седину</label>
+              </li>
+
+              <li class="page-form__checkbox added-service__item">
+                <input type="checkbox" id="added-service-6" name="подкрасить бороду">
+                <label for="added-service-6">Убрать седину</label>
+              </li>
+
+            </ul>
+          </div>
+
+          <button class="btn page-form__submit registration__submiit" type="submit">Отправить заявку</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  @@include("chunk/footer.html")
+
+  @@include("chunk/modal-login.html")
+
+  <script src="scripts.js"></script>
+</body>
+</html> 

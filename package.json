@@ -18,6 +18,22 @@
   "homepage": "https://github.com/AaLiv88/cool_barbershop#readme",
   "devDependencies": {
     "browser-sync": "^2.27.7",
-    "gulp": "^4.0.2"
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-file-include": "^2.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-less": "^5.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-size": "^4.0.1",
+    "gulp-webp": "^4.0.1",
+    "imagemin": "^8.0.1",
+    "postcss": "^8.4.12",
+    "sass": "^1.49.9"
   }
 }

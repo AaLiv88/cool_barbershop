@@ -1,0 +1,281 @@
+.status {
+  // width: 320px;
+  // margin: 0 auto;
+
+  width: auto;
+}
+
+.status__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // min-height: 185px;
+  height: auto;
+
+  padding: 30px 40px 25px 40px;
+  background-color: #ffffff;
+
+  text-align: center;
+}
+
+.status__legend {
+  display: block;
+  line-height: 20px;
+}
+
+.status__legend sup {
+  top: -0.25rem;
+  font-size: 90%;
+}
+
+.status__legend--top {
+  display: none;
+}
+
+.status__legend--bottom {
+  display: block;
+
+  padding-top: 16px;
+
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  font-size: 19px;
+
+  background-color: #242424;
+}
+
+.status__slogan {
+  margin-bottom: 20px;
+
+  font-size: 30px;
+  line-height: 27px;
+  text-transform: uppercase;
+}
+
+.status__intro {
+  width: auto;
+  max-width: 475px;
+
+  margin-bottom: 0;
+  
+  font-size: 19px;
+}
+
+.status__list {
+  width: 100%;
+  // margin: 0 auto;
+  // color: #ffffff;
+  border-collapse: collapse;
+}
+
+.status__list tr {
+  color: #ffffff;
+
+  background-color: #404040;
+
+  &:nth-child(2) {
+    background-color: #4e4e4e;
+  }
+
+  &:nth-child(3) {
+    background-color: #353535;
+  }
+
+  &:nth-child(4) {
+    background-color: #404040;
+  }
+}
+
+.status__value, 
+.status__field {
+  // display: block;
+
+  width: 50%;
+  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 19px;
+  // height: 79px;
+}
+
+.status__value {
+  padding-left: calc(20px + (10000vw - 32000px)/880);
+  padding-right: 0;
+
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.status__value sup {
+  top: -0.35em;
+
+  margin-left: 0px;
+}
+
+.status__field {
+  padding-left: 0;
+  padding-right: calc(20px + (10000vw - 32000px)/880);
+
+  font-size: 18px;
+  line-height: 18px;
+  text-align: right;
+}
+
+@media (min-width: @tablet-width) {
+  .status {
+    width: 84%;
+    max-width: 960px;
+
+    margin: 0 auto;
+    margin-top: -185px;
+  }
+
+  .status__intro br {
+    display: none;
+  }
+
+  .status__header {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+
+    height: 185px;
+
+    text-align: left;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 27px;
+      left: -14px;
+
+      border: 15px solid transparent;
+      border-bottom-color: #ffffff;
+      
+      transform: rotate(45deg);
+    }
+  }
+
+  .status__intro {
+    display: block;
+    width: 50%;
+
+    margin: 0px;
+    margin-top: 5px;
+    padding-left: 25px;
+    padding-right: 45px;
+
+    // font-size: 19px;
+  }
+
+  .status__slogan {
+    width: 50%;
+    margin-bottom: 18px;
+
+    font-size: 40px;
+    line-height: 40px;
+    text-transform: none;
+  }
+
+  .status__legend--top {
+    display: block;
+    width: 50%;
+
+    font-size: 19px;
+
+    opacity: 0.3;
+  }
+
+  .status__legend--bottom {
+    display: none;
+  }
+
+  .status__list tbody{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .status__list tr {
+    width: 50%;
+    padding: 25px 35px;
+    padding-bottom: 28px;
+  }
+
+  .status__list td{
+    display: block;
+    width: auto;
+    padding: 0;
+  }
+
+  .status__value {
+    padding: 0;
+    margin-bottom: 7px;
+
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  .status__field {
+    padding: 0;
+    font-size: 19px;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  .status__field br {
+    display: none;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .status {
+    display: flex;
+    width: 960px;
+    margin: 0 auto;
+    margin-top: -159px;
+  }
+
+  .status__header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    width: 320px;
+    height: auto;
+
+    &::before {
+      top: 22px;
+    }
+  }
+  
+  .status__slogan {
+    display: block;
+    width: auto;
+    margin-bottom: 40px;
+  }
+
+  .status__intro {
+    width: auto;
+    padding: 0;
+    margin: 0;
+
+    margin-bottom: 32px;
+    margin-right: 30px;
+  }
+
+  .status__legend--top {
+    width: auto;
+    margin-top: auto;
+  }
+
+  .status__list {
+    display: flex;
+    width: 640px;
+  }
+
+}

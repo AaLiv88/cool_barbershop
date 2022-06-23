@@ -1,0 +1,128 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+
+  background-color: @darkgrey;
+  // background-image: url("img/back-desktop.jpg");
+
+  // background-repeat: no-repeat;
+  // Background-size: 100%;
+  // background-position-y: -72px;
+
+  // @media (min-width: @tablet-width) {
+  //   font-size: 20px;
+
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  // }
+}
+
+.catalog .page-header__logo {
+
+  @media (min-width: @tablet-width) {
+    height: 215px;
+  }
+
+  @media (min-width: @desktop-width) {
+    height: 310px;
+  }
+}
+
+.page-main--catalog,
+.page-main--form {
+  background-color: @bglight;
+}
+
+a {
+  text-decoration: none;
+}
+
+picture {
+  font-size: 0;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+// .title {
+//   text-transform: uppercase;
+//   font-size: 30px;
+//   font-weight: bold;
+
+//   @media (min-width: @tablet-width) {
+//     font-size: 40px;
+//     text-transform: none;
+//   }
+// }
+
+.corner-block {
+  @media (min-width: @tablet-width) {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+  
+      position: absolute;
+      left: 0;
+      top: -41px;
+  
+      width: 0;
+      height: 0;
+    }
+
+    &--white::after,
+    &--white::before {
+      border-bottom: 41px solid @bglight;
+    }
+  
+    &::after {
+      left: 50%;
+      border-left: 50vw solid transparent;
+    }
+  
+    &::before {
+      right: 50%;
+      border-right: 50vw solid transparent;
+    }
+  }
+
+  @media (min-width: @desktop-width) {
+    &::before,
+    &::after {
+      top: -66px;
+    }
+
+    &--white::after,
+    &--white::before {
+      border-bottom: 66px solid @bglight;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
